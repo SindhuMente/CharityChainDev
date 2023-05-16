@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.8;
+pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -9,7 +9,10 @@ contract Withdrawal is Ownable {
 
     event WithdrawalPermitted(uint256 withdrawal_amt);
 
-    function allow_withdrawal(uint256 withdrawal_amt) public onlyOwner {
+    function allow_withdrawal(
+        uint256 withdrawal_amt,
+        address charity
+    ) public onlyOwner {
         require(
             total_balance >= withdrawal_amt,
             "Organization does not have enough donations to withdrawal this much!"
